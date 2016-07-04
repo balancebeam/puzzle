@@ -16,4 +16,4 @@
 
 ## 架构图
 
-[pdf architecture](pdf-doc/architecture.png)
+![pdf architecture](pdf-doc/architecture.png)

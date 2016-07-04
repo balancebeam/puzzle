@@ -28,6 +28,7 @@ public final class PluginLifeCycleManager {
 	public static final void start(PluginContext ctx) throws Exception{
 		
 		logger.info("Begin to initialize Plugin ["+ctx.getName()+"]");
+		long beginTime= System.currentTimeMillis();
 		//最先解析servlet对象，主要先获取初始化参数
 		PluginServletManager servletManager= new PluginServletManager(ctx);
 		((PluginContextSupport)ctx).setServletManager(servletManager);
@@ -61,8 +62,8 @@ public final class PluginLifeCycleManager {
 		if(null!=((PluginContextSupport)ctx).getSpringManager()){
 			((PluginContextSupport)ctx).getSpringManager().addServiceListener();
 		}
-		
-		logger.info("Plugin ["+ctx.getName()+"] started success");
+		long endTime= System.currentTimeMillis();
+		logger.info("Plugin ["+ctx.getName()+"] started success,consuming time: "+(endTime-beginTime));
 	}
 	
 	public static final void stop(PluginContext ctx) throws Exception{

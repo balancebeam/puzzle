@@ -8,8 +8,14 @@
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>
 	<url>http://maven.apache.org</url>
-	<!-- <modules> <module>pdf-bridge</module> <module>pdf-core</module> <module>pdf-registry</module> 
-		<module>pdf-webapp</module> <module>pdf-jasper</module> </modules> -->
+	<modules> 
+		<module>pdf-bridge</module> 
+		<module>pdf-core</module> 
+		<module>pdf-jasper</module> 
+		<module>pdf-web</module> 
+		<module>pdf-demo</module> 
+		<module>pdf-demo2</module> 
+	</modules>
 	<properties>
 		<OSGi.version>3.10.0-v20140606-1445</OSGi.version>
 		<servlet.version>2.5</servlet.version>

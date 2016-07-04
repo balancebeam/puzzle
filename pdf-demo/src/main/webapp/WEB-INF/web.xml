@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-fragment>
+
+	<!-- demo global parameter -->
+	<context-param>
+		<param-name>demoName</param-name>
+		<param-value>demoValue</param-value>
+	</context-param>
+	
+	<!-- demo listener -->
+	<listener>
+		<listener-class>io.pdf.demo.listener.DemoListener</listener-class>
+	</listener>
+	
+	<!-- demo filter -->
+	<filter>
+		<filter-name>demoFilter</filter-name>
+		<filter-class>io.pdf.demo.filter.DemoFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>demoFilter</filter-name>
+		<url-pattern>/rest/demo/aa/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>demoFilter</filter-name>
+		<url-pattern>/rest/demo/bb/*</url-pattern>
+	</filter-mapping>
+	
+	<!-- demo springmvc servlet -->
+	<servlet>
+		<servlet-name>demo-dispatcher</servlet-name>
+		<servlet-class>io.pdf.core.spring.PluginDispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>demo-dispatcher</servlet-name>
+		<url-pattern>/rest/demo/*</url-pattern>
+	</servlet-mapping>
+
+</web-fragment>

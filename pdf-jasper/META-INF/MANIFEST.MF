@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Activator: io.pdf.jasper.internal.JasperActivator
+Bundle-SymbolicName: io.pdf.jasper
+Bundle-Version: 3.0.0
+Bundle-Name: jasper 
+Bundle-Vendor: yangzz
+Bundle-ClassPath: WEB-INF/lib/ecj-3.7.jar,
+ WEB-INF/lib/jasper-6.0.35.jar,
+ WEB-INF/lib/jasper-el-6.0.35.jar,
+ WEB-INF/lib/juli-6.0.35.jar,
+ .

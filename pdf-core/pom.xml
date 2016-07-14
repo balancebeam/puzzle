@@ -59,6 +59,14 @@
 			<groupId>dom4j</groupId>
 			<artifactId>dom4j</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.javassist</groupId>
+		    <artifactId>javassist</artifactId>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>io.pdf.core_3.0.0-SNAPSHOT</finalName>

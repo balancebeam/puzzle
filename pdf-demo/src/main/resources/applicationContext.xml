@@ -33,14 +33,17 @@
 	
 	<context:component-scan base-package="io.pdf.demo"/>
 	
-	<!-- 
-	<bean id="transactionManager"
-		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
-
 	<tx:annotation-driven transaction-manager="transactionManager"/>
-	 -->
+	 
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations" value="classpath:io/pdf/demo/dao/mapping/*.xml" />
+	</bean>
+	
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="io.pdf.demo.dao" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+	</bean>
 	
 	<mvc:annotation-driven>
 		<mvc:message-converters register-defaults="true">

@@ -22,7 +22,6 @@
 		</property>
 	</bean>
 
-	<!--  
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName">
@@ -60,6 +59,7 @@
 		</property>
 	</bean>
 
+	<!--
 	<bean id="monitoringAdvisor" class="net.bull.javamelody.MonitoringSpringAdvisor">
 		<property name="pointcut">
 			<bean class="net.bull.javamelody.MonitoredWithAnnotationPointcut" />
@@ -78,21 +78,6 @@
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-
-	<tx:annotation-driven transaction-manager="transactionManager"/>
-
-	<context:component-scan base-package="io.monitor" />
-
-	<mvc:annotation-driven>
-		<mvc:message-converters register-defaults="true">
-			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
-				<constructor-arg value="UTF-8" />
-			</bean>
-			<bean
-				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-				<property name="prettyPrint" value="true" />
-			</bean>
-		</mvc:message-converters>
-	</mvc:annotation-driven>
--->
+	-->
+	
 </beans>

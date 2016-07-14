@@ -32,6 +32,7 @@ import io.pdf.core.PluginContext;
 import io.pdf.core.aware.PluginContextAware;
 import io.pdf.core.aware.PluginServiceAware;
 import io.pdf.core.common.Constants;
+import io.pdf.core.event.PluginFrameworkListener;
 import io.pdf.core.internal.PluginContextSupport;
 import io.pdf.core.internal.PluginRepository;
 
@@ -206,6 +207,10 @@ public class PluginListableBeanFactory extends DefaultListableBeanFactory{
 	protected Object initializeBean(final String beanName, final Object bean, RootBeanDefinition mbd) {
 		if (bean instanceof PluginContextAware) {
 			((PluginContextAware) bean).setPluginContext(pluginContext);
+		}
+		//add listener
+		if(bean instanceof PluginFrameworkListener){
+			PluginFrameworkListener.Processor.addListener((PluginFrameworkListener)bean);
 		}
 		return super.initializeBean(beanName,bean,mbd);
 	}

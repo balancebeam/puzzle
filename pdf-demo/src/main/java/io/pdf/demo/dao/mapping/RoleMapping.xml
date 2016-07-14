@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.pdf.demo.dao.RoleMapper" >
+  <resultMap id="BaseResultMap" type="io.pdf.demo.domain.Role" >
+    <id column="role_id" property="roleId" jdbcType="CHAR" />
+    <result column="role_name" property="roleName" jdbcType="VARCHAR" />
+    <result column="role_birthday" property="roleBirthday" jdbcType="DATE" />
+    <result column="role_salary" property="roleSalary" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    role_id, role_name, role_birthday, role_salary
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_role
+    where role_id = #{roleId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_role
+    where role_id = #{roleId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="io.pdf.demo.domain.Role" >
+    insert into t_role (role_id, role_name, role_birthday, 
+      role_salary)
+    values (#{roleId,jdbcType=CHAR}, #{roleName,jdbcType=VARCHAR}, #{roleBirthday,jdbcType=DATE}, 
+      #{roleSalary,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="io.pdf.demo.domain.Role" >
+    insert into t_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="roleId != null" >
+        role_id,
+      </if>
+      <if test="roleName != null" >
+        role_name,
+      </if>
+      <if test="roleBirthday != null" >
+        role_birthday,
+      </if>
+      <if test="roleSalary != null" >
+        role_salary,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="roleId != null" >
+        #{roleId,jdbcType=CHAR},
+      </if>
+      <if test="roleName != null" >
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleBirthday != null" >
+        #{roleBirthday,jdbcType=DATE},
+      </if>
+      <if test="roleSalary != null" >
+        #{roleSalary,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="io.pdf.demo.domain.Role" >
+    update t_role
+    <set >
+      <if test="roleName != null" >
+        role_name = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleBirthday != null" >
+        role_birthday = #{roleBirthday,jdbcType=DATE},
+      </if>
+      <if test="roleSalary != null" >
+        role_salary = #{roleSalary,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where role_id = #{roleId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="io.pdf.demo.domain.Role" >
+    update t_role
+    set role_name = #{roleName,jdbcType=VARCHAR},
+      role_birthday = #{roleBirthday,jdbcType=DATE},
+      role_salary = #{roleSalary,jdbcType=DOUBLE}
+    where role_id = #{roleId,jdbcType=CHAR}
+  </update>
+</mapper>

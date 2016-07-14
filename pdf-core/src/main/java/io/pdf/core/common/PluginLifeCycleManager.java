@@ -14,6 +14,7 @@ import org.osgi.framework.ServiceReference;
 import org.springframework.util.CollectionUtils;
 
 import io.pdf.core.PluginContext;
+import io.pdf.core.event.PluginFrameworkListener;
 import io.pdf.core.internal.PluginContextSupport;
 import io.pdf.core.service.PluginExtensionPointService;
 import io.pdf.core.servlet.PluginServletManager;
@@ -62,6 +63,9 @@ public final class PluginLifeCycleManager {
 		if(null!=((PluginContextSupport)ctx).getSpringManager()){
 			((PluginContextSupport)ctx).getSpringManager().addServiceListener();
 		}
+		//if done execute plugin framework listener,else do not
+		PluginFrameworkListener.Processor.execute(false);
+		
 		long endTime= System.currentTimeMillis();
 		logger.info("Plugin ["+ctx.getName()+"] started success,consuming time: "+(endTime-beginTime));
 	}

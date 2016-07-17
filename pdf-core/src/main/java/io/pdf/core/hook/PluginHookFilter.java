@@ -52,16 +52,21 @@ public class PluginHookFilter implements Filter,ApplicationContextAware{
 			FilterChain chain) throws IOException, ServletException {
 		
 		String requestPath= PluginRequestUtil.getRequestPath((HttpServletRequest)request);
+		
+		if(logger.isInfoEnabled()){
+			logger.info("RequestPath: "+requestPath);
+		}
+		
 		for(String pattern: iInterceptPatternsNone){
 			if(PluginRequestUtil.match(pattern, requestPath)){
+				if(logger.isInfoEnabled()){
+					logger.info("skip over path: {pattern="+pattern+",requestPath="+requestPath+"}");
+				}
 				chain.doFilter(request, response);
 				return;
 			}
 		}
 		
-		if(logger.isDebugEnabled()){
-			logger.debug("RequestPath: "+requestPath);
-		}
 		try{
 			VirtualFilterChain vfc = new VirtualFilterChain(chain,requestPath);
 			vfc.doFilter(request, response);
@@ -127,6 +132,9 @@ public class PluginHookFilter implements Filter,ApplicationContextAware{
 		XPropertyConfigurer configurer = applicationContext.getBean(XPropertyConfigurer.class);
 		String patterns= configurer.getProperties().getProperty(Constants.INTERCEPT_NONE_PATTERN);
 		if(!StringUtils.isEmpty(patterns)){
+			if(logger.isInfoEnabled()){
+				logger.info("framework.intercept.none.patterns: "+patterns);
+			}
 			iInterceptPatternsNone= patterns.split(",");
 		}
 	}

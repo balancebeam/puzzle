@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<beans xmlns="http://www.springframework.org/schema/beans"
+<beans xmlns="http://www.springframework.org/schema/beans"  xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:task="http://www.springframework.org/schema/task" xmlns:mvc="http://www.springframework.org/schema/mvc"
@@ -9,10 +9,11 @@
 				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
 				http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
 				http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
-				http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+				http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+				http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
 	<!-- 全局参数定义 -->
-	<bean id="GlobalPropertyConfigurer"
+	<bean id="GlobalPropertyConfigurer" 
 		class="io.pdf.bridge.ext.XPropertyConfigurer">
 		<property name="ignoreUnresolvablePlaceholders" value="true" />
 		<property name="locations">
@@ -21,7 +22,7 @@
 			</list>
 		</property>
 	</bean>
-
+	
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName">
@@ -79,5 +80,11 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	-->
+	
+	<dubbo:application name="pdf-demo-provider" owner="programmer" organization="dubbox"/>
+	
+	<dubbo:registry address="zookeeper://127.0.0.1:2181"/>
+	
+    <dubbo:protocol name="dubbo" serialization="kryo" />
 	
 </beans>

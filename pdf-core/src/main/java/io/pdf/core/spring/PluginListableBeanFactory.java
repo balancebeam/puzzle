@@ -205,10 +205,11 @@ public class PluginListableBeanFactory extends DefaultListableBeanFactory{
 	//inject custom aware interface, in component ApplicationContext
 	@Override
 	protected Object initializeBean(final String beanName, final Object bean, RootBeanDefinition mbd) {
+		//inject pluginContext
 		if (bean instanceof PluginContextAware) {
 			((PluginContextAware) bean).setPluginContext(pluginContext);
 		}
-		//add listener
+		//add PluginFrameworkListener
 		if(bean instanceof PluginFrameworkListener){
 			PluginFrameworkListener.Processor.addListener((PluginFrameworkListener)bean);
 		}
@@ -222,4 +223,5 @@ public class PluginListableBeanFactory extends DefaultListableBeanFactory{
 		}
 		return super.doCreateBean(beanName, mbd, args);
 	}
+	
 }

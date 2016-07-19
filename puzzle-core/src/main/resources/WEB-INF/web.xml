@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-fragment>
+	<!-- 请求插件中HttpServlet对象 -->
+	<filter>
+		<filter-name>servletDispatcher</filter-name>
+		<filter-class>io.anyway.puzzle.core.hook.delegate.ServletDispatcherFilter</filter-class>
+		<init-param>
+			<param-name>priority</param-name>
+			<param-value>10001</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>servletDispatcher</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!-- 请求插件中的静态资源 -->
+	<filter>
+		<filter-name>defaultDispatcher</filter-name>
+		<filter-class>io.anyway.puzzle.core.hook.delegate.DefaultDispatcherFilter</filter-class>
+		<init-param>
+			<param-name>priority</param-name>
+			<param-value>10003</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>defaultDispatcher</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+</web-fragment>

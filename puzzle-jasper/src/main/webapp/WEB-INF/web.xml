@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-fragment>
+	<!-- 处理组件中的jsp -->
+	<filter>
+		<filter-name>jspDispatcher</filter-name>
+		<filter-class>io.anyway.puzzle.jasper.JspDispatcherFilter</filter-class>
+		<init-param>
+			<param-name>priority</param-name>
+			<param-value>10002</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>jspDispatcher</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>	
+
+</web-fragment>

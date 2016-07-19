@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-SymbolicName: io.pdf.demo.base
-Bundle-Version: 3.0.0
-Bundle-Name: demo.base
-Bundle-Vendor: yangzz
-Bundle-PDF: true
-Export-Package: io.pdf.demo.domain,
- io.pdf.demo.service

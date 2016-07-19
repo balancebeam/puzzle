@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-fragment>
+	
+	<!-- demo consumer springmvc servlet -->
+	<servlet>
+		<servlet-name>demo-dubbo-consumer-dispatcher</servlet-name>
+		<servlet-class>io.anyway.puzzle.core.spring.PluginDispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>demo-dubbo-consumer-dispatcher</servlet-name>
+		<url-pattern>/rest/dubbo/consumer/*</url-pattern>
+	</servlet-mapping>
+
+</web-fragment>

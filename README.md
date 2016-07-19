@@ -1,4 +1,4 @@
-# PDF
+# Puzzle
 ### Plugin Development Framework
 
 ## 功能介绍
@@ -16,4 +16,4 @@
 
 ## 架构图
 
-![pdf architecture](pdf-doc/architecture.png)
+![puzzle architecture](puzzle-doc/architecture.png)

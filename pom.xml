@@ -2,19 +2,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>io.pdf</groupId>
-	<artifactId>pdf</artifactId>
+	<groupId>io.anyway.puzzle</groupId>
+	<artifactId>puzzle</artifactId>
 	<version>3.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>
 	<url>http://maven.apache.org</url>
 	<modules> 
-		<module>pdf-bridge</module> 
-		<module>pdf-core</module> 
-		<module>pdf-jasper</module> 
-		<module>pdf-web</module> 
-		<module>pdf-demo</module> 
-		<module>pdf-demo2</module> 
+		<module>puzzle-bridge</module>
+		<module>puzzle-core</module>
+		<module>puzzle-jasper</module>
+		<module>puzzle-web</module>
+		<module>demo</module> 
 	</modules>
 	<properties>
 		<OSGi.version>3.10.0-v20140606-1445</OSGi.version>

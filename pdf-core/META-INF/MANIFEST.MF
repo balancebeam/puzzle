@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: 框架核心组件 
-Bundle-SymbolicName: io.pdf.core
-Bundle-Version: 3.0.0
-Fragment-Host: org.eclipse.osgi;bundle-version="3.10.0"
-Bundle-SymbolicName: io.pdf.core
-ExtensionBundle-Activator: io.pdf.core.internal.PluginActivator
-Bundle-Vendor: yangzz

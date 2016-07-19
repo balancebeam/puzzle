@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: io.anyway.puzzle.demo
+Bundle-Version: 3.0.0
+Bundle-Name: demo
+Bundle-Vendor: yangzz
+Bundle-PDF: true
+Export-Package: io.anyway.puzzle.demo.domain,
+ io.anyway.puzzle.demo.service

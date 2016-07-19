@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-SymbolicName: io.pdf.demo.dubbo.consumer
-Bundle-Version: 3.0.0
-Bundle-Name: demo.dubbo.consumer
-Bundle-Vendor: yangzz
-Bundle-PDF: true
-Import-Package: io.pdf.demo.dubbo.api.domain,
- io.pdf.demo.dubbo.api.service

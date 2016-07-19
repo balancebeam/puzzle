@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"  xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:task="http://www.springframework.org/schema/task" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+				http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+				http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
+				http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+				http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<!-- 全局参数定义 -->
+	<bean id="GlobalPropertyConfigurer" 
+		class="io.anyway.puzzle.bridge.ext.XPropertyConfigurer">
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="locations">
+			<list>
+				<value>classpath:config.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName">
+			<value>${dataSource.driver}</value>
+		</property>
+		<property name="url">
+			<value>${dataSource.url}</value>
+		</property>
+		<property name="username">
+			<value>${dataSource.user}</value>
+		</property>
+		<property name="password">
+			<value>${dataSource.password}</value>
+		</property>
+		<property name="maxTotal">
+			<value>${dataSource.maxTotal:50}</value>
+		</property>
+		<property name="initialSize">
+			<value>${dataSource.initialSize:5}</value>
+		</property>
+		<property name="maxIdle">
+			<value>240</value>
+		</property>
+		<property name="maxWaitMillis">
+			<value>10000</value>
+		</property>
+		<property name="defaultAutoCommit">
+			<value>true</value>
+		</property>
+		<property name="testOnBorrow">
+			<value>true</value>
+		</property>
+		<property name="validationQuery">
+			<value>select 1</value>
+		</property>
+	</bean>
+
+	<!--
+	<bean id="monitoringAdvisor" class="net.bull.javamelody.MonitoringSpringAdvisor">
+		<property name="pointcut">
+			<bean class="net.bull.javamelody.MonitoredWithAnnotationPointcut" />
+		</property>
+	</bean>
+
+	<bean
+		class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator">
+		<property name="proxyTargetClass" value="true"></property>
+	</bean>
+
+	<bean id="springDataSourceBeanPostProcessor" class="net.bull.javamelody.SpringDataSourceBeanPostProcessor">
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	-->
+	
+	<dubbo:application name="puzzle-demo-dubbo-provider" owner="programmer" organization="dubbox"/>
+	
+	<dubbo:registry address="zookeeper://127.0.0.1:2181"/>
+	
+    <dubbo:protocol name="dubbo" serialization="kryo" />
+	
+</beans>

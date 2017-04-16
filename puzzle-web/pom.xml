@@ -98,4 +98,5 @@
 	<build>
 		<finalName>io.io.anyway.puzzle.web_${project.parent.version}</finalName>
 	</build>
+	<packaging>war</packaging>
 </project>

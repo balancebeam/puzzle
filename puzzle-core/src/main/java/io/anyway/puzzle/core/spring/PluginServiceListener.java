@@ -13,11 +13,9 @@ import org.osgi.framework.ServiceEvent;
 import org.osgi.framework.ServiceListener;
 import org.osgi.framework.ServiceReference;
 import org.springframework.aop.framework.Advised;
-import org.springframework.aop.scope.ScopedObject;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.DependencyDescriptor;
-import org.springframework.core.InfrastructureProxy;
 import org.springframework.util.ReflectionUtils;
 
 import io.anyway.puzzle.core.PluginContext;
@@ -163,14 +161,7 @@ public class PluginServiceListener implements ServiceListener {
 				return ((Advised) bean).getTargetSource().getTarget();
 			} catch (Exception e) {
 				logger.error(e.getMessage(), e);
-				return bean;
 			}
-		}
-		if (bean instanceof InfrastructureProxy) {
-			return ((InfrastructureProxy) bean).getWrappedObject();
-		}
-		if (bean instanceof ScopedObject) {
-			return ((ScopedObject) bean).getTargetObject();
 		}
 		return bean;
 	}

@@ -16,15 +16,12 @@
 		<module>demo</module> 
 	</modules>
 	<properties>
+		<hibernate.version>4.3.8.Final</hibernate.version>
 		<OSGi.version>3.10.0-v20140606-1445</OSGi.version>
-		<servlet.version>2.5</servlet.version>
 		<spring.version>4.1.6.RELEASE</spring.version>
-		<jackson.version>2.4.5</jackson.version>
-		<gson.version>2.2.2</gson.version>
+		<servlet.version>2.5</servlet.version>
 	</properties>
-
 	<dependencyManagement>
-
 		<dependencies>
 			<!-- OSGI -->
 			<dependency>
@@ -32,15 +29,13 @@
 			    <artifactId>osgi</artifactId>
 			    <version>${OSGi.version}</version>
 			</dependency>
-
 			<!-- Servlet -->
 			<dependency>
 				<groupId>javax.servlet</groupId>
 				<artifactId>servlet-api</artifactId>
 				<version>${servlet.version}</version>
 			</dependency>
-
-			<!-- springframework -->
+			<!-- SpringFramework -->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-context</artifactId>
@@ -86,9 +81,7 @@
 				<artifactId>spring-jdbc</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
-			<!-- <dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-core</artifactId> 
-				<version>3.2.4.RELEASE</version> </dependency> -->
-			<!-- json serialize & deserialize -->
+			<!-- JsonSerialize&Deserialize -->
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-databind</artifactId>
@@ -99,35 +92,7 @@
 				<artifactId>gson</artifactId>
 				<version>2.2.2</version>
 			</dependency>
-
-			<!-- object copy util dependency jar -->
-			<dependency>
-				<groupId>net.sf.dozer</groupId>
-				<artifactId>dozer</artifactId>
-				<version>5.5.1</version>
-			</dependency>
-
-			<!-- tester dependency jar -->
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>4.12</version>
-			</dependency>
-
-			<!-- db source dependency jar -->
-			<dependency>
-				<groupId>org.apache.commons</groupId>
-				<artifactId>commons-dbcp2</artifactId>
-				<version>2.1</version>
-			</dependency>
-
-			<!-- db connector dependency jar -->
-			<dependency>
-				<groupId>mysql</groupId>
-				<artifactId>mysql-connector-java</artifactId>
-				<version>5.1.18</version>
-			</dependency>
-			<!-- log4j dependency -->
+			<!-- Log4J -->
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
@@ -143,15 +108,53 @@
 				<artifactId>log4j</artifactId>
 				<version>1.2.16</version>
 			</dependency>
-
-			<!-- cache dependency -->
 			<dependency>
-				<groupId>net.sf.ehcache</groupId>
-				<artifactId>ehcache-core</artifactId>
-				<version>2.4.3</version>
+				<groupId>dom4j</groupId>
+				<artifactId>dom4j</artifactId>
+				<version>1.6.1</version>
 			</dependency>
-
-			<!--org apache -->
+			<!-- Database-->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-dbcp2</artifactId>
+				<version>2.1</version>
+			</dependency>
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>5.1.18</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-core</artifactId>
+				<version>${hibernate.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-validator</artifactId>
+				<version>${hibernate.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-entitymanager</artifactId>
+				<version>${hibernate.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-ehcache</artifactId>
+				<version>${hibernate.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis</artifactId>
+				<version>3.2.8</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis-spring</artifactId>
+				<version>1.2.2</version>
+			</dependency>
+			<!-- Apache -->
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-lang3</artifactId>
@@ -167,42 +170,13 @@
 				<artifactId>commons-fileupload</artifactId>
 				<version>1.2.1</version>
 			</dependency>
-
-			<!-- email -->
+			<!-- Cache -->
 			<dependency>
-				<groupId>javax.mail</groupId>
-				<artifactId>mail</artifactId>
-				<version>1.5.0-b01</version>
+				<groupId>net.sf.ehcache</groupId>
+				<artifactId>ehcache-core</artifactId>
+				<version>2.4.3</version>
 			</dependency>
-
-			<!-- velocity -->
-			<dependency>
-				<groupId>org.apache.velocity</groupId>
-				<artifactId>velocity</artifactId>
-				<version>1.7</version>
-			</dependency>
-
-			<!-- cas -->
-			<dependency>
-				<groupId>org.jasig.cas.client</groupId>
-				<artifactId>cas-client-core</artifactId>
-				<version>3.1.12</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.springframework.security</groupId>
-				<artifactId>spring-security-cas-client</artifactId>
-				<version>3.0.8.RELEASE</version>
-			</dependency>
-
-			<!-- quartz -->
-			<dependency>
-				<groupId>org.quartz-scheduler</groupId>
-				<artifactId>quartz</artifactId>
-				<version>2.2.1</version>
-			</dependency>
-
-			<!-- redis cache client jedis -->
+			<!-- Redis -->
 			<dependency>
 				<groupId>redis.clients</groupId>
 				<artifactId>jedis</artifactId>
@@ -213,8 +187,7 @@
 				<artifactId>spring-data-redis</artifactId>
 				<version>1.6.1.RELEASE</version>
 			</dependency>
-
-			<!-- zookeeper dependency -->
+			<!-- Zookeeper -->
 			<dependency>
 				<groupId>org.apache.curator</groupId>
 				<artifactId>curator-client</artifactId>
@@ -230,31 +203,53 @@
 				<artifactId>curator-recipes</artifactId>
 				<version>3.0.0</version>
 			</dependency>
-
-			<!-- mybatis -->
-			<dependency>
-				<groupId>org.mybatis</groupId>
-				<artifactId>mybatis</artifactId>
-				<version>3.2.8</version>
-			</dependency>
-			<dependency>
-				<groupId>org.mybatis</groupId>
-				<artifactId>mybatis-spring</artifactId>
-				<version>1.2.2</version>
-			</dependency>
-
-			<dependency>
-				<groupId>dom4j</groupId>
-				<artifactId>dom4j</artifactId>
-				<version>1.6.1</version>
-			</dependency>
-			
+			<!-- Javassist -->
 			<dependency>
 			    <groupId>org.javassist</groupId>
 			    <artifactId>javassist</artifactId>
 			    <version>3.20.0-GA</version>
 			</dependency>
-
+			<!-- Email -->
+			<dependency>
+				<groupId>javax.mail</groupId>
+				<artifactId>mail</artifactId>
+				<version>1.5.0-b01</version>
+			</dependency>
+			<!-- velocity -->
+			<dependency>
+				<groupId>org.apache.velocity</groupId>
+				<artifactId>velocity</artifactId>
+				<version>1.7</version>
+			</dependency>
+			<!-- Cas -->
+			<dependency>
+				<groupId>org.jasig.cas.client</groupId>
+				<artifactId>cas-client-core</artifactId>
+				<version>3.1.12</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-cas-client</artifactId>
+				<version>3.0.8.RELEASE</version>
+			</dependency>
+			<!-- Quartz -->
+			<dependency>
+				<groupId>org.quartz-scheduler</groupId>
+				<artifactId>quartz</artifactId>
+				<version>2.2.1</version>
+			</dependency>
+			<!-- ObjectCopyUtil -->
+			<dependency>
+				<groupId>net.sf.dozer</groupId>
+				<artifactId>dozer</artifactId>
+				<version>5.5.1</version>
+			</dependency>
+			<!-- UnitTest -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.12</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<repositories>
@@ -270,7 +265,6 @@
 			</snapshots>
 		</repository>
 	</repositories>
-
 	<build>
 		<pluginManagement>
 			<plugins>
@@ -281,9 +275,9 @@
 					<configuration>
 						<verbose>true</verbose>
 						<fork>true</fork>
-						<compilerVersion>1.6</compilerVersion>
-						<source>1.6</source>
-						<target>1.6</target>
+						<compilerVersion>1.7</compilerVersion>
+						<source>1.7</source>
+						<target>1.7</target>
 					</configuration>
 				</plugin>
 
@@ -299,7 +293,6 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
 	<licenses>
 		<license>
 			<name>Apache License 2.0</name>

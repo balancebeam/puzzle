@@ -7,7 +7,7 @@
 		<artifactId>puzzle</artifactId>
 		<version>3.0.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>pdf-jasper</artifactId>
+	<artifactId>puzzle-jasper</artifactId>
 	<name>${project.artifactId}</name>
 	<url>http://maven.apache.org</url>
 	<packaging>jar</packaging>

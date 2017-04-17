@@ -23,7 +23,6 @@ public final class LocalizedTextUtil {
 			return getMessage(aClass,code,args,locale);
 		}catch(NoSuchMessageException e){	
 			logger.warn("not find the property: {key="+code+",locale="+locale+"}");
-			//TODO format defaultMessage
 			return defaultMessage;
 		}
 	}

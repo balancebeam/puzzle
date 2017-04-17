@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<beans xmlns="http://www.springframework.org/schema/beans"  xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+<beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:task="http://www.springframework.org/schema/task" xmlns:mvc="http://www.springframework.org/schema/mvc"
@@ -9,8 +9,8 @@
 				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
 				http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
 				http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
-				http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
-				http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+				http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd"
+				>
 
 	<!-- 全局参数定义 -->
 	<bean id="GlobalPropertyConfigurer" 
@@ -59,6 +59,29 @@
 			<value>select 1</value>
 		</property>
 	</bean>
+	
+	<bean id="sessionFactory" class="io.anyway.puzzle.bridge.hibernate.FrameworkSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql:true}</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.query.factory_class">org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory</prop>
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="transactionManager"	class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
 
 	<!--
 	<bean id="monitoringAdvisor" class="net.bull.javamelody.MonitoringSpringAdvisor">
@@ -80,11 +103,5 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	-->
-	
-	<dubbo:application name="puzzle-demo-dubbo-provider" owner="programmer" organization="dubbox"/>
-	
-	<dubbo:registry address="zookeeper://127.0.0.1:2181"/>
-	
-    <dubbo:protocol name="dubbo" serialization="kryo" />
 	
 </beans>

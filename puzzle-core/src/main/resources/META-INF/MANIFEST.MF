@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: io.anyway.puzzle.core
+Bundle-Version: 3.0.0
+Fragment-Host: org.eclipse.osgi;bundle-version="3.10.0"
+Bundle-SymbolicName: io.anyway.puzzle.core
+ExtensionBundle-Activator: io.anyway.puzzle.core.internal.PluginActivator
+Bundle-Vendor: yangzz

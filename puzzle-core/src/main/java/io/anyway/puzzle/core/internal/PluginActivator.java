@@ -80,8 +80,8 @@ public class PluginActivator implements BundleActivator,SynchronousBundleListene
 	@Override
 	public void bundleChanged(BundleEvent event) {
 		Bundle bundle= event.getBundle();
-		//如果不是PDF插件
-		if(!"true".equals(bundle.getHeaders().get("Bundle-PDF"))){
+		//如果不是Puzzle插件
+		if(!"true".equals(bundle.getHeaders().get("Bundle-Puzzle"))){
 			return;
 		}
 		

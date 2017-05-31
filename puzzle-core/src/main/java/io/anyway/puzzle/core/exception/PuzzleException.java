@@ -1,5 +1,8 @@
 package io.anyway.puzzle.core.exception;
 
+import io.anyway.puzzle.core.common.LocalizedTextUtil;
+
+import java.io.IOException;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +13,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.context.NoSuchMessageException;
 import org.springframework.context.i18n.LocaleContextHolder;
 
-import io.anyway.puzzle.core.common.LocalizedTextUtil;
+import com.google.gson.JsonObject;
 /**
  * Plugin Base Exception 
  * @author yangzz
@@ -123,18 +126,19 @@ public class PuzzleException extends RuntimeException{
 		//set error type
 		response.setContentType("application/json;charset=UTF-8");
 		//set error context
-//		JsonObject result= new JsonObject();
-//		result.addProperty("status", "error");
-//		if(code!= -1){
-//			result.addProperty("code", this.code);
-//		}
-//		result.addProperty("message", getMessage());
-//		try {
-//			response.getWriter().write(result.toString());
-//			response.getWriter().flush();
-//			response.getWriter().close();
-//		} catch (IOException e) {
-//			logger.error("Write stream error", e);
-//		}
+		JsonObject result= new JsonObject();
+		
+		result.addProperty("status", "error");
+		if(code!= -1){
+			result.addProperty("code", this.code);
+		}
+		result.addProperty("message", getMessage());
+		try {
+			response.getWriter().write(result.toString());
+			response.getWriter().flush();
+			response.getWriter().close();
+		} catch (IOException e) {
+			logger.error("Write stream error", e);
+		}
 	}
 }

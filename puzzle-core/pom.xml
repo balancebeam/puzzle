@@ -63,6 +63,10 @@
 		    <groupId>org.javassist</groupId>
 		    <artifactId>javassist</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>io.anyway.puzzle.core_${project.parent.version}</finalName>

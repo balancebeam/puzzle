@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -111,7 +112,7 @@ public class PluginPropertyBuilder {
 					continue;
 				}
 				//添加扩展包
-				if(filename.startsWith("io.pdf.core_")) {
+				if(filename.startsWith("io.anayway.puzzle.core_")) {
 					if(!properties.containsKey("osgi.framework.extensions")){
 						properties.put("osgi.framework.extensions", "reference:file:"+each.getName());
 					}
@@ -120,7 +121,7 @@ public class PluginPropertyBuilder {
 				if(each.isFile()){
 					//添加调试插件
 					if(each.getName().equals("debug.cfg")){
-						Properties debugPlugins= new Properties();
+						Properties debugPlugins= new LinkedProperties();
 						InputStream fin= null;
 						try {
 							fin = new FileInputStream(each);
@@ -137,8 +138,9 @@ public class PluginPropertyBuilder {
 								}
 							}
 						}
-						for(Object it: debugPlugins.values()){
-							String fname= (String)it;
+						for(Enumeration<Object> it= debugPlugins.keys();it.hasMoreElements();){
+							String key = (String)it.nextElement();
+							String fname= debugPlugins.getProperty(key);
 							if(new File(fname).exists()){
 								debugs.add(fname);
 							}

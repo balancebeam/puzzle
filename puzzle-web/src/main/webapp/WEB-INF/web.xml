@@ -1,19 +1,25 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
-
+<?xml version="1.0" encoding="UTF-8"?>
 <web-app>
 	<display-name>Puzzle Development Framework Application</display-name>
-	
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:applicationContext.xml</param-value>
 	</context-param>
 	
+	<!-- Framework Listener -->
 	<listener>
 		<listener-class>io.anyway.puzzle.bridge.hook.PuzzleListener</listener-class>
 	</listener>
-	
+	<!-- Hibernate Session Filter-->
+	<filter>
+		<filter-name>openSessionInViewFilter</filter-name>
+		<filter-class>io.anyway.puzzle.bridge.hibernate.FrameworkSessionInViewFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>openSessionInViewFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- Framework Filter -->
 	<filter>
 		<filter-name>encoding</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -29,8 +35,7 @@
 	<filter-mapping>
 		<filter-name>encoding</filter-name>
 		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-	
+	</filter-mapping>	
 	<filter>
 		<filter-name>framework-filter</filter-name>
 		<filter-class>io.anyway.puzzle.bridge.hook.PuzzleFilter</filter-class>

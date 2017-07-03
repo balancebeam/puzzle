@@ -82,26 +82,4 @@
 		</property>
 	</bean>
 	
-
-	<!--
-	<bean id="monitoringAdvisor" class="net.bull.javamelody.MonitoringSpringAdvisor">
-		<property name="pointcut">
-			<bean class="net.bull.javamelody.MonitoredWithAnnotationPointcut" />
-		</property>
-	</bean>
-
-	<bean
-		class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator">
-		<property name="proxyTargetClass" value="true"></property>
-	</bean>
-
-	<bean id="springDataSourceBeanPostProcessor" class="net.bull.javamelody.SpringDataSourceBeanPostProcessor">
-	</bean>
-
-	<bean id="transactionManager"
-		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
-	-->
-	
 </beans>

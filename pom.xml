@@ -268,6 +268,7 @@
 	<build>
 		<pluginManagement>
 			<plugins>
+				
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
@@ -278,6 +279,7 @@
 						<compilerVersion>1.7</compilerVersion>
 						<source>1.7</source>
 						<target>1.7</target>
+						<encoding>UTF-8</encoding>
 					</configuration>
 				</plugin>
 
@@ -289,7 +291,6 @@
 					</configuration>
 					<version>2.7.2</version>
 				</plugin>
-
 			</plugins>
 		</pluginManagement>
 	</build>

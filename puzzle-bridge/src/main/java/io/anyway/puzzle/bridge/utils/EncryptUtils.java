@@ -175,7 +175,7 @@ public class EncryptUtils {
 		while (reader.hasNext()) {
 			try {
 				String test = reader.nextLine();
-				EncryptUtils des = new EncryptUtils("balancebeam");// 自定义密钥
+				EncryptUtils des = new EncryptUtils("zhijiao");// 自定义密钥
 				System.out.println("加密后的字符：" + des.encrypt(test));
 				System.out.println("解密后的字符：" + des.decrypt(des.encrypt(test)));
 				System.out.println("反解密后的字符：" + des.decrypt(test));
